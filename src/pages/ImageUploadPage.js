@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { mainSlice } from "../store/main";
 import { urls } from "../urls";
+import { api_process_image } from "../api";
 
 const ImageUploadPage = () => {
   const inputRef = useRef();
@@ -32,8 +33,7 @@ const ImageUploadPage = () => {
   const onProcess = async (e) => {
     e.preventDefault();
     dispatch(mainSlice.actions.setInput(img));
-    // API call
-    dispatch(mainSlice.actions.setResult(img));
+    dispatch(mainSlice.actions.setResult(await api_process_image(img)));
     navigate(urls.result);
   };
 
