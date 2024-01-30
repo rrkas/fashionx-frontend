@@ -5,7 +5,7 @@ const ResultPage = () => {
   const { inputImage, resultImage } = useSelector((store) => store.main);
 
   return (
-    <div className="p-5 text-center">
+    <div className="p-5 text-center container-xl">
       <div className="row">
         {inputImage && (
           <div className="col-6 col-md-6">

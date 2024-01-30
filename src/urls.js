@@ -1,6 +1,5 @@
 export const urls = {
   home: "/",
-  upload_image: "/upload-image",
-  say_cheese: "/say-cheese",
+  form: "/form",
   result: "/result",
 };

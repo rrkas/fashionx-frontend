@@ -1,10 +1,9 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import HomePage from "./pages/HomePage";
+import FormPage from "./pages/FormPage";
 import RootLayout from "./layouts/RootLayout";
-import ImageUploadPage from "./pages/ImageUploadPage";
-import ImageCapturePage from "./pages/ImageCapturePage";
 import { urls } from "./urls";
 import ResultPage from "./pages/ResultPage";
+import HomePage from "./pages/HomePage";
 
 function App() {
   const router = createBrowserRouter([
@@ -16,12 +15,8 @@ function App() {
           element: <HomePage />,
         },
         {
-          path: urls.upload_image,
-          element: <ImageUploadPage />,
-        },
-        {
-          path: urls.say_cheese,
-          element: <ImageCapturePage />,
+          path: urls.form,
+          element: <FormPage />,
         },
         {
           path: urls.result,
