@@ -1,21 +1,21 @@
 import React, { useCallback, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Webcam from "react-webcam";
 import { base64_to_blob, blob_url_to_blob } from "../utils/image_utils";
 import { mainSlice } from "../store/main";
 import { urls } from "../urls";
 import { api_process_image } from "../api";
-import { APP_NAME, imageInputType } from "../utils/constants";
+import { APP_NAME, acceptableImgExt, imageInputType } from "../utils/constants";
 
 const FormPage = () => {
+  const { type: imageType } = useParams();
   const [state, setState] = useState({
     img: null,
     inputTypeCamera: false,
   });
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const imageType = useSelector((store) => store.main.imageType);
   const webcamRef = useRef(null);
   const inputRef = useRef();
 
@@ -76,47 +76,42 @@ const FormPage = () => {
       >
         {Object.entries(imageInputType).filter((e) => e[1] === imageType)[0][0]}
       </div>
-      <div className="row">
-        <div className="col-12">
-          <div class="btn-group w-100 mb-5" role="group">
-            <input
-              type="radio"
-              class="btn-check"
-              name="btn-radio-dropdown"
-              id="btn-radio-dropdown-1"
-              autocomplete="off"
-              checked={!state.inputTypeCamera}
-              onClick={toggleCamera}
-            />
-            <label for="btn-radio-dropdown-1" type="button" class="btn">
-              File Upload
-            </label>
-            <input
-              type="radio"
-              class="btn-check"
-              name="radio-src"
-              id="btn-radio-dropdown-2"
-              autocomplete="off"
-              checked={state.inputTypeCamera}
-              onClick={toggleCamera}
-            />
-            <label for="btn-radio-dropdown-2" type="button" class="btn">
-              Camera
-            </label>
+      {
+        <div className="row">
+          <div className="col-12">
+            <div class="btn-group w-100 mb-5" role="group">
+              <input
+                type="radio"
+                class="btn-check"
+                name="btn-radio-dropdown"
+                id="btn-radio-dropdown-1"
+                autocomplete="off"
+                checked={!state.inputTypeCamera}
+                onClick={toggleCamera}
+              />
+              <label for="btn-radio-dropdown-1" type="button" class="btn">
+                File Upload
+              </label>
+              <input
+                type="radio"
+                class="btn-check"
+                name="radio-src"
+                id="btn-radio-dropdown-2"
+                autocomplete="off"
+                checked={state.inputTypeCamera}
+                onClick={toggleCamera}
+              />
+              <label for="btn-radio-dropdown-2" type="button" class="btn">
+                Camera
+              </label>
+            </div>
           </div>
         </div>
-      </div>
+      }
       {state.inputTypeCamera ? (
         <div>
-          {state.img ? (
-            <div>
-              <img
-                src={URL.createObjectURL(state.img)}
-                className="w-50 h-50 mt-4"
-              />
-            </div>
-          ) : (
-            <div>
+          {!state.img && (
+            <>
               <div>
                 <Webcam
                   className="h-50 w-50"
@@ -132,7 +127,7 @@ const FormPage = () => {
               <button className="btn btn-primary mt-4" onClick={capture}>
                 Capture photo
               </button>
-            </div>
+            </>
           )}
         </div>
       ) : (
@@ -143,7 +138,7 @@ const FormPage = () => {
                 ref={inputRef}
                 type="file"
                 className="form-control"
-                accept=".png,.jpg,.jpeg"
+                accept={acceptableImgExt}
                 onChange={onChangeImage}
                 multiple={false}
               />

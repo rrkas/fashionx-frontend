@@ -2,15 +2,8 @@ import { Outlet, Link } from "react-router-dom";
 import { urls } from "../urls";
 import { imageInputType } from "../utils/constants";
 import { useDispatch } from "react-redux";
-import { mainSlice } from "../store/main";
 
 const RootLayout = () => {
-  const dispatch = useDispatch();
-
-  function onSelectType(e, val) {
-    dispatch(mainSlice.actions.setType(val));
-  }
-
   return (
     <div className="page h-100 w-100">
       <header className="navbar navbar-expand-md d-print-none">
@@ -46,8 +39,7 @@ const RootLayout = () => {
                   <li className="nav-item" key={i}>
                     <Link
                       className="nav-link"
-                      to={urls.form}
-                      onClick={(ev) => onSelectType(ev, e[1])}
+                      to={urls.form(e[1])}
                     >
                       <span className="nav-link-title strong">
                         {e[0].toUpperCase()}

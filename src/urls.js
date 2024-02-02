@@ -1,5 +1,5 @@
 export const urls = {
   home: "/",
-  form: "/form",
+  form: (type) =>  `/form/${type}`,
   result: "/result",
 };
