@@ -38,6 +38,22 @@ const HomePage = () => {
                 image_url: "https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                 title: "T-shirt",
               },
+              {
+                image_url: "https://media.istockphoto.com/id/1270438087/photo/looks-from-the-80s-are-making-a-comeback-in-fashion.webp?b=1&s=170667a&w=0&k=20&c=wfXpGOsRJJ2fHm4mgjB8qt2xPtSPSjPrZhnkqvlOtGY=",
+                title: "Shirt",
+              },
+              {
+                image_url: "https://images.unsplash.com/photo-1454720503269-3a35c21bebc6?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGZhc2hpb24lMjBqZWFuc3xlbnwwfHwwfHx8MA%3D%3D",
+                title: "Lowers",
+              },
+              {
+                image_url: "https://plus.unsplash.com/premium_photo-1670214286548-64aba7516393?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZmFzaGlvbiUyMHNob2VzfGVufDB8fDB8fHww",
+                title: "Foot wear",
+              },
+              {
+                image_url: "https://images.unsplash.com/3/www.madebyvadim.com.jpg?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8ZmFzaGlvbiUyMGFjY2Vzc29yaWVzfGVufDB8fDB8fHww",
+                title: "Accesories",
+              },
             ].map((e, i) => (
               <div className="col-12 col-md-4" key={i}>
                 <div className="card card-body">
