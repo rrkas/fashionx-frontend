@@ -37,10 +37,7 @@ const RootLayout = () => {
               <ul className="navbar-nav">
                 {Object.entries(imageInputType).map((e, i) => (
                   <li className="nav-item" key={i}>
-                    <Link
-                      className="nav-link"
-                      to={urls.form(e[1])}
-                    >
+                    <Link className="nav-link" to={urls.form(e[1])}>
                       <span className="nav-link-title strong">
                         {e[0].toUpperCase()}
                       </span>
@@ -53,7 +50,9 @@ const RootLayout = () => {
         </div>
       </header>
       <div className="page-wrapper h-100 w-100">
-        <div className="h-100 w-100">{<Outlet />}</div>
+        <div className="h-100 w-100">
+          <Outlet />
+        </div>
       </div>
     </div>
   );

@@ -52,10 +52,11 @@ const FormPage = () => {
   const onProcess = async (e) => {
     e.preventDefault();
     dispatch(mainSlice.actions.setInput(state.img));
-    dispatch(
-      mainSlice.actions.setResult(await api_process_image(state.img, imageType))
-    );
-    navigate(urls.result);
+    const resp = await api_process_image(state.img, imageType);
+    if (resp) {
+      dispatch(mainSlice.actions.setResult(resp));
+      navigate(urls.result);
+    }
   };
 
   function toggleCamera(e) {

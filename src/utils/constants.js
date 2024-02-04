@@ -1,10 +1,10 @@
 export const APP_NAME = "FashionX";
 
 export const imageInputType = {
-  IMAGE: "image",
+  IMAGE: "imageSingle",
   SKETCH: "sketches",
   DRAWING: "drawings",
-  WARDROBE: "wardrobe",
+  WARDROBE: "ai",
 };
 
 export const wardrobeTypes = {
@@ -12,6 +12,5 @@ export const wardrobeTypes = {
   LEG_WEAR: "legwear",
   SHOES: "shoes",
 };
-
 
 export const acceptableImgExt = ".png,.jpg,.jpeg";

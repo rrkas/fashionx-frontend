@@ -62,12 +62,11 @@ const WardrobeFormPage = () => {
   const onProcess = async (e) => {
     e.preventDefault();
     dispatch(mainSlice.actions.setInput(state));
-    dispatch(
-      mainSlice.actions.setResult(
-        await api_process_image(state, imageInputType.WARDROBE)
-      )
-    );
-    navigate(urls.result);
+    const resp = await api_process_image(state, imageInputType.WARDROBE);
+    if (resp) {
+      dispatch(mainSlice.actions.setResult(resp));
+      // navigate(urls.result);
+    }
   };
 
   console.log(state);
@@ -150,7 +149,7 @@ const WardrobeFormPage = () => {
                     </div>
                   </div>
                 )}
-                {typeidx != Object.values(wardrobeTypes).length - 1 && (
+                {typeidx !== Object.values(wardrobeTypes).length - 1 && (
                   <hr
                     className="mt-3 mb-3 border border-black border-3"
                     style={{ outlineColor: "black" }}
